@@ -8,10 +8,7 @@
 #include "ros/ros.h"
 #include "uav_hud/ros_topics.h"
 
-int main(int argc, char **argv)
-{
-	ros::init(argc, argv, "uav_hud");
-	ros::NodeHandle nodeHandle;
+int main(int argc, char **argv) {
+  ros::init(argc, argv, "uav_hud");
+  ros::NodeHandle nodeHandle;
 }
-
-
