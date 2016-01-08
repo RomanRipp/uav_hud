@@ -10,12 +10,18 @@
 #include <string>
 
 namespace uav_hud {
-
 class Topics {
   // Input topics:
-  const static std::string INPUT_VIDEO = "uav_hud/input_image";
+public:
+  static const std::string INPUT_VIDEO()
+  {
+	  return "/bebop/image_raw";
+  }
 
   // Output topics
-  const static std::string OUTPUT_VIDEO = "uav_hud/output_image";
+  static const std::string OUTPUT_VIDEO()
+  {
+	  return INPUT_VIDEO() + "/uav_hud";
+  }
 };
 }
