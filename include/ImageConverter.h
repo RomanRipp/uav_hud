@@ -6,10 +6,18 @@
  */
 #pragma once
 
+#include <memory>
+#include <vector>
+
 #include <ros/ros.h>
 #include <image_transport/image_transport.h>
 
+#include "IGraphicElement.h"
+
 namespace uav_hud {
+
+typedef std::unique_ptr<IGraphicElement> IGraphicElementPtr;
+
 class ImageConverter
 {
 public:
@@ -23,5 +31,7 @@ private:
 	image_transport::ImageTransport m_imageTransport;
 	image_transport::Subscriber     m_imageSubscriber;
 	image_transport::Publisher      m_imagePublisher;
+
+	std::vector<IGraphicElementPtr> m_graphicElements;
 };
 }

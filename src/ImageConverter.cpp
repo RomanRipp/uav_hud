@@ -5,15 +5,15 @@
  *      Author: robot
  */
 
-#include "uav_hud/ImageConverter.h"
-#include "uav_hud/ros_topics.h"
+#include "ImageConverter.h"
+#include "ros_topics.h"
 
 #include <cv_bridge/cv_bridge.h>
 #include <sensor_msgs/image_encodings.h>
 #include <opencv2/imgproc/imgproc.hpp>
 #include <opencv2/highgui/highgui.hpp>
 
-namespace uav_hud{
+namespace uav_hud {
 
 static const std::string OPENCV_WINDOW = "Image window";
 

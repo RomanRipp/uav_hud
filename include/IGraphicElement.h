@@ -16,7 +16,7 @@ public:
 	virtual void Erase() = 0;
 
 public:
-	virtual ~IGraphicElement();
+	virtual ~IGraphicElement(){};
 };
 
 }

@@ -22,7 +22,7 @@ void BatteryLevel::Draw() {
 
 }
 
-void BatteryLevel::Clear() {
+void BatteryLevel::Erase() {
 
 }
 

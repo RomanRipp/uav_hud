@@ -17,7 +17,7 @@ public:
 
 public:
 	virtual void Draw() override;
-	virtual void Clear() override;
+	virtual void Erase() override;
 };
 
 }

@@ -13,6 +13,8 @@ find_package(catkin REQUIRED COMPONENTS
   image_transport
 )
 
+set(CMAKE_CXX_FLAGS "-std=c++11 ${CMAKE_CXX_FLAGS}")
+
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
 
@@ -104,7 +106,8 @@ include_directories(
 # add_dependencies(uav_hud ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Declare a C++ executable
-add_executable(uav_hud_node src/uav_hud_node.cpp src/ImageConverter.cpp)
+file(GLOB srcfiles "src/*.cpp")
+add_executable(uav_hud_node ${srcfiles})
 
 ## Add cmake target dependencies of the executable
 ## same as for the library above
