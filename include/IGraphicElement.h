@@ -7,12 +7,14 @@
 
 #pragma once
 
+#include <cv_bridge/cv_bridge.h>
+
 namespace uav_hud {
 
 class IGraphicElement
 {
 public:
-	virtual void Draw() = 0;
+	virtual void Draw(const cv_bridge::CvImagePtr& cv_ptr) = 0;
 	virtual void Erase() = 0;
 
 public:

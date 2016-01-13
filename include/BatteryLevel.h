@@ -16,7 +16,7 @@ public:
 	virtual ~BatteryLevel();
 
 public:
-	virtual void Draw() override;
+	virtual void Draw(const cv_bridge::CvImagePtr& cv_ptr) override;
 	virtual void Erase() override;
 };
 
