@@ -10,18 +10,12 @@
 #include <string>
 
 namespace uav_hud {
-class Topics {
+namespace Topics {
   // Input topics:
-public:
-  static const std::string INPUT_VIDEO()
-  {
-	  return "/bebop/image_raw";
-  }
+  static const std::string INPUT_VIDEO = "image_raw";
+  static const std::string BATTERY_LEVEL = "battery_level";
 
   // Output topics
-  static const std::string OUTPUT_VIDEO()
-  {
-	  return INPUT_VIDEO() + "/uav_hud";
-  }
+  static const std::string OUTPUT_VIDEO = INPUT_VIDEO + "/uav_hud";
 };
 }

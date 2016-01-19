@@ -24,16 +24,20 @@ static const std::string OPENCV_WINDOW = "Image window";
 ImageConverter::ImageConverter()
 	: m_imageTransport(m_nodeHandle)
 {
+	std::unique_ptr<BatteryLevel> batteryLevelPtr(new BatteryLevel());
+    // Initialize graphic elements
+
 	// Initialize subscribers
-	m_imageSubscriber = m_imageTransport.subscribe(Topics::INPUT_VIDEO(),
+	m_imageSubscriber = m_imageTransport.subscribe(Topics::INPUT_VIDEO,
 			1, &ImageConverter::Convert, this);
+	m_batteryLevelSubscriber = m_nodeHandle.subscribe(Topics::BATTERY_LEVEL,
+			1, &BatteryLevel::Update, batteryLevelPtr.get());
 
 	// Initialize publishers
-    m_imagePublisher = m_imageTransport.advertise(Topics::OUTPUT_VIDEO(), 1);
+    m_imagePublisher = m_imageTransport.advertise(Topics::OUTPUT_VIDEO, 1);
 
-    // Initialize graphic elements
-    m_graphicElements.push_back(IGraphicElementPtr(new BatteryLevel()));
-
+    //Collect graphics elements;
+    m_graphicElements.push_back(std::move(batteryLevelPtr));
 
     cv::namedWindow(OPENCV_WINDOW);
 }

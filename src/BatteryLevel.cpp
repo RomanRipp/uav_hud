@@ -5,9 +5,10 @@
  *      Author: robot
  */
 
-#include <opencv2/imgproc/imgproc.hpp>
-
 #include "BatteryLevel.h"
+
+#include <opencv2/imgproc/imgproc.hpp>
+#include "ros/ros.h"
 
 namespace uav_hud {
 
@@ -18,6 +19,10 @@ BatteryLevel::BatteryLevel() {
 
 BatteryLevel::~BatteryLevel() {
 	// TODO Auto-generated destructor stub
+}
+
+void BatteryLevel::Update(const std_msgs::Int32& level) {
+	ROS_INFO("Battery level:  x=%ld", level);
 }
 
 void BatteryLevel::Draw(const cv_bridge::CvImagePtr& cv_ptr) {

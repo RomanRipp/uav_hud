@@ -31,6 +31,7 @@ private:
 	image_transport::ImageTransport m_imageTransport;
 	image_transport::Subscriber     m_imageSubscriber;
 	image_transport::Publisher      m_imagePublisher;
+	ros::Subscriber                 m_batteryLevelSubscriber;
 
 	std::vector<IGraphicElementPtr> m_graphicElements;
 };
