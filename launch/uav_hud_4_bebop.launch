@@ -2,9 +2,8 @@
 	<group ns="bebop">
 	
 		<node pkg="uav_hud" name="uav_hud_node" type="uav_hud_node" required="true" output="screen">
-			<remap from="battery_level" to="states/common/CommonState/BatteryStateChanged/percent"/>
-			<!--remap from="battery_level" to="test"/-->
+			<remap from="battery_level" to="states/common/CommonState/BatteryStateChanged"/>
 		</node>
-		
+				
 	</group>
 </launch>

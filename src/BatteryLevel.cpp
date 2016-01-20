@@ -6,8 +6,10 @@
  */
 
 #include "BatteryLevel.h"
+#include "UISettings.h"
 
 #include <opencv2/imgproc/imgproc.hpp>
+#include <string>
 #include "ros/ros.h"
 
 namespace uav_hud {
@@ -17,24 +19,25 @@ BatteryLevel::BatteryLevel() {
 
 }
 
-BatteryLevel::~BatteryLevel() {
-	// TODO Auto-generated destructor stub
-}
-
-void BatteryLevel::Update(const std_msgs::Int32& level) {
-	ROS_INFO("Battery level:  x=%ld", level);
+void BatteryLevel::Update(const bebop_msgs::CommonCommonStateBatteryStateChanged& level) {
+	ROS_INFO("Battery level:  x=%d", level.percent);
+	m_batteryLevel = level.percent;
 }
 
 void BatteryLevel::Draw(const cv_bridge::CvImagePtr& cv_ptr) {
 	// Draw an example circle on the video stream
-	if (cv_ptr->image.rows > 60 && cv_ptr->image.cols > 60)
-	{
-		cv::circle(cv_ptr->image, cv::Point(50, 50), 10, CV_RGB(0, 255, 0));
-	}
+	std::string text = "BAT: ";
+	text += std::to_string(m_batteryLevel);
+	text += "%";
+	auto color = m_batteryLevel < 10 ? defaults::ERROR_COLOR : defaults::COLOR;
+	cv::Point textOrg(10, 130);
+	cv::putText(cv_ptr->image,
+			text,
+			textOrg,
+			defaults::FONT_FACE,
+			defaults::FONT_SCALE,
+			color,
+			defaults::THICKNESS, 8);
+
 }
-
-void BatteryLevel::Erase() {
-
-}
-
 }

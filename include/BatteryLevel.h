@@ -7,19 +7,19 @@
 #pragma once
 
 #include "IGraphicElement.h"
-#include "std_msgs/Int32.h"
+#include "bebop_msgs/CommonCommonStateBatteryStateChanged.h"
 
 namespace uav_hud {
 
 class BatteryLevel : public IGraphicElement {
 public:
 	BatteryLevel();
-	virtual ~BatteryLevel();
 
 public:
-	virtual void Update(const std_msgs::Int32& level);
+	virtual void Update(const bebop_msgs::CommonCommonStateBatteryStateChanged& level);
 	virtual void Draw(const cv_bridge::CvImagePtr& cv_ptr) override;
-	virtual void Erase() override;
+private:
+	size_t m_batteryLevel;
 };
 
 }
