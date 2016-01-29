@@ -6,12 +6,17 @@
  */
 #pragma once
 
-#include "IGraphicElement.h"
 #include "bebop_msgs/CommonCommonStateBatteryStateChanged.h"
+
+#include "IGraphicElement.h"
+#include "BaseGraphicElement.h"
 
 namespace uav_hud {
 
-class BatteryLevel : public IGraphicElement {
+class BatteryLevel :
+		public IGraphicElement,
+		public BaseGraphicElement
+{
 public:
 	BatteryLevel();
 

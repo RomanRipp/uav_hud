@@ -14,7 +14,7 @@ FlyingState::FlyingState() {
 }
 
 void FlyingState::Update(const bebop_msgs::CommonCommonStateBatteryStateChanged& state) {
-	m_state = level;
+	m_state = state;
 }
 
 void FlyingState::Draw(const cv_bridge::CvImagePtr& cv_ptr) {
