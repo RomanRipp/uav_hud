@@ -10,14 +10,11 @@
 
 namespace uav_hud {
 
-BaseGraphicElement::BaseGraphicElement() : m_IsUpdated(false)
-{
-	// TODO Auto-generated constructor stub
+BaseGraphicElement::BaseGraphicElement() : m_IsUpdated(false) {
 
 }
 
 BaseGraphicElement::~BaseGraphicElement() {
-	// TODO Auto-generated destructor stub
 }
 
 cv::Size BaseGraphicElement::GetSize(const cv::Mat& image) const {
