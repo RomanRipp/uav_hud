@@ -5,12 +5,12 @@
  *      Author: robot
  */
 
-#include "BatteryLevel.h"
-#include "UISettings.h"
-
-#include <opencv2/imgproc/imgproc.hpp>
 #include <string>
 #include "ros/ros.h"
+#include <opencv2/imgproc/imgproc.hpp>
+
+#include "BatteryLevel.h"
+#include "UISettings.h"
 
 namespace uav_hud {
 

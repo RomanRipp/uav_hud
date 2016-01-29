@@ -10,6 +10,7 @@
 #include "ImageConverter.h"
 
 int main(int argc, char **argv) {
+  ROS_INFO("Node started");
   ros::init(argc, argv, "image_converter");
   uav_hud::ImageConverter ic;
   ros::spin();
