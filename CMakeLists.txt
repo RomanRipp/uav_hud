@@ -14,6 +14,11 @@ find_package(catkin REQUIRED COMPONENTS
   bebop_msgs
 )
 
+find_package(Qt5Quick REQUIRED)
+find_package(Qt5Qml REQUIRED)
+find_package(Qt5Widgets REQUIRED)
+find_package(Qt5Core REQUIRED)
+
 set(CMAKE_CXX_FLAGS "-std=c++1y ${CMAKE_CXX_FLAGS}")
 
 ## System dependencies are found with CMake's conventions
@@ -94,6 +99,9 @@ catkin_package(
 include_directories(
   include
   ${catkin_INCLUDE_DIRS}
+  ${Qt5Widgets_INCLUDE_DIRS}
+  ${Qt5Qml_INCLUDE_DIRS}
+  ${Qt5Quick_INCLUDE_DIRS}
 )
 
 ## Declare a C++ library
@@ -117,6 +125,9 @@ add_executable(uav_hud_node ${srcfiles})
 ## Specify libraries to link a library or executable target against
 target_link_libraries(uav_hud_node
   ${catkin_LIBRARIES}
+  ${Qt5Widgets_LIBRARIES}
+  ${Qt5Qml_LIBRARIES}
+  ${Qt5Quick_LIBRARIES}
 )
 
 #############
