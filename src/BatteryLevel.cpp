@@ -34,10 +34,6 @@ void BatteryLevel::Draw(const cv_bridge::CvImagePtr& cv_ptr) {
 		text += "%";
 		auto color = m_batteryLevel < 10 ? defaults::ERROR_COLOR : defaults::COLOR;
 		cv::Point textOrg(10, 130);
-
-
-
-
 		cv::putText(cv_ptr->image,
 				text,
 				textOrg,

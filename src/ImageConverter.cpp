@@ -65,8 +65,10 @@ void ImageConverter::Convert(const sensor_msgs::ImageConstPtr& message)
 	}
 
 	// Update GUI Window
-	cv::imshow(OPENCV_WINDOW, cv_ptr->image);
-	cv::waitKey(3);
+    // cv::imshow(OPENCV_WINDOW, cv_ptr->image);
+    // cv::waitKey(3);
+
+
 
 	// Output modified video stream
 	m_imagePublisher.publish(cv_ptr->toImageMsg());
