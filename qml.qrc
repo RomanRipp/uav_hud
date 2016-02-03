@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/">
+        <file>qml/hud.qml</file>
+        <file>images/cam.svg</file>
+        <file>images/NoSignal.png</file>
+    </qresource>
+</RCC>
