@@ -11,6 +11,7 @@
 
 #include <ros/ros.h>
 #include <image_transport/image_transport.h>
+#include <QtQml/QQmlApplicationEngine>
 
 #include "IGraphicElement.h"
 
@@ -27,6 +28,8 @@ public:
 	void Convert(const sensor_msgs::ImageConstPtr& message);
 
 private:
+	QQmlApplicationEngine m_qtEngine;
+
 	ros::NodeHandle m_nodeHandle;
 	image_transport::ImageTransport m_imageTransport;
 	image_transport::Subscriber     m_imageSubscriber;

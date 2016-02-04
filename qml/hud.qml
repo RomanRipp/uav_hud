@@ -8,7 +8,15 @@ Window {
     property alias image: image
     property alias battery: battery
     visible: true
+    width: 640
+	height: 368    
 
+	Column {
+		Image { source: "image: //colors/yellow.png" }
+		Image { source: "image: //colors/red.png" }
+	}
+
+    
     Item {
         id: container
         anchors.fill: parent
