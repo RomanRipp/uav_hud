@@ -29,7 +29,7 @@ void BatteryLevel::Update(const bebop_msgs::CommonCommonStateBatteryStateChanged
 	m_batteryLevel = level.percent;
 	m_IsUpdated = true;
 
-	std::string text = "BAT: ";
+	std::string text = "BAT ---";
 	text += std::to_string(m_batteryLevel);
 	text += "%";
 

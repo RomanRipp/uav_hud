@@ -10,40 +10,61 @@
 
 namespace uav_hud {
 
+static cv::Point GetTextPosition(const cv::Size& imageSize){
+	if (imageSize.width <= 0)
+		return cv::Point(0.0, 0.0);
+
+	int x = imageSize.height - defaults::MARGIN;
+	int y = imageSize.width / 2;
+	return (cv::Point(x, y));
+}
+
 FlyingState::FlyingState() : BaseGraphicElement(),
 		m_state(bebop_msgs::Ardrone3PilotingStateFlyingStateChanged::state_landed),
-		m_text("FlyingState: LANDED") {
+		m_text("FlyingState ------") {
 }
 
 void FlyingState::Update(const bebop_msgs::Ardrone3PilotingStateFlyingStateChanged& state) {
 	m_state = state.state;
 	m_IsUpdated = true;
+	m_color = defaults::COLOR;
+	m_text = "FlyingState ";
+
 	switch(m_state) {
 	case bebop_msgs::Ardrone3PilotingStateFlyingStateChanged::state_emergency:
-		m_text = "FlyingState: EMERGENCY";
+		m_text += "EMERGENCY";
 		m_color = defaults::ERROR_COLOR;
 		break;
 	case bebop_msgs::Ardrone3PilotingStateFlyingStateChanged::state_flying:
-		m_text = "FlyingState: FLYING";
+		m_text += "FLYING";
 		break;
 	case bebop_msgs::Ardrone3PilotingStateFlyingStateChanged::state_hovering:
-		m_text = "FlyingState: HOVERING";
+		m_text += "HOVERING";
 		break;
 	case bebop_msgs::Ardrone3PilotingStateFlyingStateChanged::state_landed:
-		m_text = "FlyingState: LANDED";
+		m_text += "LANDED";
 		break;
 	case bebop_msgs::Ardrone3PilotingStateFlyingStateChanged::state_landing:
-		m_text = "FlyingState: LANDING";
+		m_text += "LANDING";
 		break;
 	case bebop_msgs::Ardrone3PilotingStateFlyingStateChanged::state_takingoff:
-		m_text = "FlyingState: TAKINGOFF";
+		m_text += "TAKINGOFF";
 		break;
 
 	}
 }
 
 void FlyingState::Draw(const cv_bridge::CvImagePtr& cv_ptr) {
-
+	if (m_IsUpdated) {
+		m_origin = GetTextPosition(GetSize(cv_ptr->image));
+		cv::putText(cv_ptr->image,
+				m_text,
+				m_origin,
+				defaults::FONT_FACE,
+				defaults::FONT_SCALE,
+				m_color,
+				defaults::THICKNESS, 8);
+	}
 }
 }
 
