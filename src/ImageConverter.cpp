@@ -18,6 +18,7 @@
 #include "BatteryLevel.h"
 #include "FlyingState.h"
 #include "Altitude.h"
+#include "CameraCrosshair.h"
 
 namespace uav_hud {
 
@@ -46,6 +47,7 @@ ImageConverter::ImageConverter()
     Initialize<BatteryLevel>(m_nodeHandle, m_subscribers, m_graphicElements, Topics::BATTERY_LEVEL);
     Initialize<FlyingState>(m_nodeHandle, m_subscribers, m_graphicElements, Topics::FLYING_STATE);
     Initialize<Altitude>(m_nodeHandle, m_subscribers, m_graphicElements, Topics::ALTITUDE);
+    Initialize<CameraCrosshair>(m_nodeHandle, m_subscribers, m_graphicElements, Topics::CAMERA_ORIENTATION);
 
     cv::namedWindow(OPENCV_WINDOW);
 }

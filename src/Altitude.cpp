@@ -11,7 +11,7 @@
 
 namespace uav_hud {
 
-cv::Point GetTextPosition(
+static cv::Point GetTextPosition(
 		const cv::Size& imageSize,
 		const cv::Size& textSize)
 {

@@ -14,6 +14,7 @@ namespace defaults {
 	static int THICKNESS = 1;
 	static double FONT_SCALE = 1;
 	static cv::Scalar COLOR(0,255,0);
+	static cv::Scalar COLOR2(255,255,255);
 	static cv::Scalar ERROR_COLOR(255,0,0);
 
 }

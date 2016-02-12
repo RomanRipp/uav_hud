@@ -16,6 +16,7 @@ namespace Topics {
   static const std::string BATTERY_LEVEL = "battery_level";
   static const std::string FLYING_STATE = "flying_state";
   static const std::string ALTITUDE = "altitude";
+  static const std::string CAMERA_ORIENTATION = "camera_orientation";
 
   // Output topics
   static const std::string OUTPUT_VIDEO = INPUT_VIDEO + "/uav_hud";
