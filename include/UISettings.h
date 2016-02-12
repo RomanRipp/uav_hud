@@ -9,6 +9,7 @@
 namespace uav_hud {
 namespace defaults {
 
+	static int MARGIN = 8;
 	static int FONT_FACE = 1;
 	static int THICKNESS = 1;
 	static double FONT_SCALE = 1;

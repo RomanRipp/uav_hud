@@ -14,8 +14,12 @@
 
 namespace uav_hud {
 
+static cv::Point GetTextPosition(){
+	return cv::Point(defaults::MARGIN, 2*defaults::MARGIN);
+}
+
 BatteryLevel::BatteryLevel() : BaseGraphicElement(),
-		m_batteryLevel(0)
+		m_batteryLevel(0), m_text("BAT: ")
 {
 
 }
@@ -24,26 +28,24 @@ void BatteryLevel::Update(const bebop_msgs::CommonCommonStateBatteryStateChanged
 	ROS_INFO("Battery level:  x=%d", level.percent);
 	m_batteryLevel = level.percent;
 	m_IsUpdated = true;
+
+	std::string text = "BAT: ";
+	text += std::to_string(m_batteryLevel);
+	text += "%";
+
+	m_origin = GetTextPosition();
 }
 
 void BatteryLevel::Draw(const cv_bridge::CvImagePtr& cv_ptr) {
 	// Draw an example circle on the video stream
 	if (m_IsUpdated) {
-		std::string text = "BAT: ";
-		text += std::to_string(m_batteryLevel);
-		text += "%";
-		auto color = m_batteryLevel < 10 ? defaults::ERROR_COLOR : defaults::COLOR;
-		cv::Point textOrg(10, 130);
-
-
-
-
+		m_color = m_batteryLevel < 10 ? defaults::ERROR_COLOR : defaults::COLOR;
 		cv::putText(cv_ptr->image,
-				text,
-				textOrg,
+				m_text,
+				m_origin,
 				defaults::FONT_FACE,
 				defaults::FONT_SCALE,
-				color,
+				m_color,
 				defaults::THICKNESS, 8);
 	}
 }

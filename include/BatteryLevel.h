@@ -14,7 +14,7 @@
 namespace uav_hud {
 
 class BatteryLevel :
-		public IGraphicElement,
+		public virtual IGraphicElement,
 		public BaseGraphicElement
 {
 public:
@@ -25,6 +25,7 @@ public:
 	virtual void Draw(const cv_bridge::CvImagePtr& cv_ptr) override;
 private:
 	size_t m_batteryLevel;
+	std::string m_text;
 };
 
 }

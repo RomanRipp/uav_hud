@@ -22,6 +22,8 @@ protected:
 
 protected:
 	bool m_IsUpdated;
+	cv::Point m_origin;
+	cv::Scalar m_color;
 };
 
 } /* namespace uav_hud */

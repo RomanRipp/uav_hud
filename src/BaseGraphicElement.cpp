@@ -10,7 +10,8 @@
 
 namespace uav_hud {
 
-BaseGraphicElement::BaseGraphicElement() : m_IsUpdated(false) {
+BaseGraphicElement::BaseGraphicElement() : m_IsUpdated(false),
+		m_color(defaults::COLOR), m_origin(cv::Point(0.0, 0.0)) {
 
 }
 
