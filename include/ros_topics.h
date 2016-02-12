@@ -14,6 +14,8 @@ namespace Topics {
   // Input topics:
   static const std::string INPUT_VIDEO = "image_raw";
   static const std::string BATTERY_LEVEL = "battery_level";
+  static const std::string FLYING_STATE = "flying_state";
+  static const std::string ALTITUDE = "altitude";
 
   // Output topics
   static const std::string OUTPUT_VIDEO = INPUT_VIDEO + "/uav_hud";

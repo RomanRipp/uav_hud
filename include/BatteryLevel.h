@@ -24,7 +24,6 @@ public:
 	virtual void Update(const bebop_msgs::CommonCommonStateBatteryStateChanged& level);
 	virtual void Draw(const cv_bridge::CvImagePtr& cv_ptr) override;
 private:
-	size_t m_batteryLevel;
 	std::string m_text;
 };
 

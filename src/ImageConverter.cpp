@@ -16,28 +16,36 @@
 #include "ros_topics.h"
 #include "ImageConverter.h"
 #include "BatteryLevel.h"
+#include "FlyingState.h"
+#include "Altitude.h"
 
 namespace uav_hud {
 
 static const std::string OPENCV_WINDOW = "Image window";
 
+template <typename T>
+void Initialize(ros::NodeHandle& nodeHandle,
+		std::vector<ros::Subscriber>& subscribers,
+		std::vector<IGraphicElementPtr>& graphicElements,
+		const std::string& topicName)
+{
+	std::unique_ptr<T> elementPtr(new T());
+	subscribers.push_back(nodeHandle.subscribe(topicName, 1, &T::Update, elementPtr.get()));
+	graphicElements.push_back(std::move(elementPtr));
+}
+
 ImageConverter::ImageConverter()
 	: m_imageTransport(m_nodeHandle)
 {
-	std::unique_ptr<BatteryLevel> batteryLevelPtr(new BatteryLevel());
-    // Initialize graphic elements
-
-	// Initialize subscribers
+	// Initialize image subscriber
 	m_imageSubscriber = m_imageTransport.subscribe(Topics::INPUT_VIDEO,
 			1, &ImageConverter::Convert, this);
-	m_batteryLevelSubscriber = m_nodeHandle.subscribe(Topics::BATTERY_LEVEL,
-			1, &BatteryLevel::Update, batteryLevelPtr.get());
-
-	// Initialize publishers
+	// Initialize image publisher
     m_imagePublisher = m_imageTransport.advertise(Topics::OUTPUT_VIDEO, 1);
 
-    //Collect graphics elements;
-    m_graphicElements.push_back(std::move(batteryLevelPtr));
+    Initialize<BatteryLevel>(m_nodeHandle, m_subscribers, m_graphicElements, Topics::BATTERY_LEVEL);
+    Initialize<FlyingState>(m_nodeHandle, m_subscribers, m_graphicElements, Topics::FLYING_STATE);
+    Initialize<Altitude>(m_nodeHandle, m_subscribers, m_graphicElements, Topics::ALTITUDE);
 
     cv::namedWindow(OPENCV_WINDOW);
 }

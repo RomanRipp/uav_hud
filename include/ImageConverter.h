@@ -27,12 +27,11 @@ public:
 	void Convert(const sensor_msgs::ImageConstPtr& message);
 
 private:
-	ros::NodeHandle m_nodeHandle;
+	ros::NodeHandle                 m_nodeHandle;
 	image_transport::ImageTransport m_imageTransport;
-	image_transport::Subscriber     m_imageSubscriber;
 	image_transport::Publisher      m_imagePublisher;
-	ros::Subscriber                 m_batteryLevelSubscriber;
-
+	image_transport::Subscriber     m_imageSubscriber;
 	std::vector<IGraphicElementPtr> m_graphicElements;
+	std::vector<ros::Subscriber>    m_subscribers;
 };
 }
