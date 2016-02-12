@@ -5,7 +5,8 @@
  *      Author: robot
  */
 
-#include "include/FlyingState.h"
+#include "FlyingState.h"
+#include "bebop_msgs/Ardrone3PilotingStateFlyingStateChanged.h"
 
 namespace uav_hud {
 
@@ -13,7 +14,7 @@ FlyingState::FlyingState() {
 // TODO Auto-generated constructor stub
 }
 
-void FlyingState::Update(const bebop_msgs::CommonCommonStateBatteryStateChanged& state) {
+void FlyingState::Update(const bebop_msgs::Ardrone3PilotingStateFlyingStateChanged& state) {
 	m_state = state;
 }
 
