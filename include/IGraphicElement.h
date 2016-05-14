@@ -16,7 +16,7 @@ class IGraphicElement
 public:
 	virtual void Draw(const cv_bridge::CvImagePtr& cv_ptr) = 0;
 public:
-	virtual ~IGraphicElement(){};
+	virtual ~IGraphicElement() = default;
 };
 
 }

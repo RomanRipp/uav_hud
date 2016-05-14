@@ -19,6 +19,7 @@
 #include "FlyingState.h"
 #include "Altitude.h"
 #include "CameraCrosshair.h"
+#include "RollPitchYaw.h"
 
 namespace uav_hud {
 
@@ -48,6 +49,7 @@ ImageConverter::ImageConverter()
     Initialize<FlyingState>(m_nodeHandle, m_subscribers, m_graphicElements, Topics::FLYING_STATE);
     Initialize<Altitude>(m_nodeHandle, m_subscribers, m_graphicElements, Topics::ALTITUDE);
     Initialize<CameraCrosshair>(m_nodeHandle, m_subscribers, m_graphicElements, Topics::CAMERA_ORIENTATION);
+    Initialize<RollPitchYaw>(m_nodeHandle, m_subscribers, m_graphicElements, Topics::ATTITUDE);
 
     cv::namedWindow(OPENCV_WINDOW);
 }

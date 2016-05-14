@@ -18,8 +18,8 @@ class FlyingState :
 public:
 	FlyingState();
 
-	virtual void Update(const bebop_msgs::Ardrone3PilotingStateFlyingStateChanged& state);
-	virtual void Draw(const cv_bridge::CvImagePtr& cv_ptr) override;
+	void Update(const bebop_msgs::Ardrone3PilotingStateFlyingStateChanged& state);
+	void Draw(const cv_bridge::CvImagePtr& cv_ptr) override;
 private:
 	std::string m_text;
 };

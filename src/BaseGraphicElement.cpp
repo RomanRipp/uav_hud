@@ -5,8 +5,8 @@
  *      Author: robot
  */
 
-#include "opencv2/opencv.hpp"
 #include "BaseGraphicElement.h"
+#include "opencv2/opencv.hpp"
 
 namespace uav_hud {
 

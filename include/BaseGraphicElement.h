@@ -7,6 +7,7 @@
 
 #pragma once
 
+#include <opencv2/opencv.hpp>
 #include "UISettings.h"
 
 namespace uav_hud {

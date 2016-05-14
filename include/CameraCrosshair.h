@@ -20,8 +20,8 @@ public:
 	CameraCrosshair();
 
 public:
-	virtual void Update(const bebop_msgs::Ardrone3CameraStateOrientation& level);
-	virtual void Draw(const cv_bridge::CvImagePtr& cv_ptr) override;
+	void Update(const bebop_msgs::Ardrone3CameraStateOrientation& level);
+	void Draw(const cv_bridge::CvImagePtr& cv_ptr) override;
 };
 
 } /* namespace uav_hud */
