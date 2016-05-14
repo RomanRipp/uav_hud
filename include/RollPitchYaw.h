@@ -7,7 +7,6 @@
 
 #pragma once
 
-#include <tf/tf.h>
 #include <bebop_msgs/Ardrone3PilotingStateAttitudeChanged.h>
 
 #include "BaseGraphicElement.h"
@@ -25,7 +24,8 @@ public:
 	void Draw(const cv_bridge::CvImagePtr& cv_ptr) override;
 
 private:
-	tf::Quaternion m_orientation;
+	double m_roll;
+	double m_pitch;
 };
 
 } /* namespace uav_hud */

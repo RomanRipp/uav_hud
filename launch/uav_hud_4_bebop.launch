@@ -5,6 +5,7 @@
 			<remap from="battery_level" to="states/common/CommonState/BatteryStateChanged"/>
 			<remap from="flying_state" to="states/ARDrone3/PilotingState/FlyingStateChanged"/>
 			<remap from="altitude" to="states/ARDrone3/PilotingState/AltitudeChanged"/>
+			<remap from="attitude" to="states/ARDrone3/PilotingState/AttitudeChanged"/>
 			<remap from="camera_orientation" to="states/ARDrone3/CameraState/Orientation"/>
 		</node>
 				
